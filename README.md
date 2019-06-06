@@ -1,7 +1,7 @@
 # Sistema_para_emissao_de_atas
 sistema criado para servir como nota da medida de eficiência da segunda unidade da matéria Laboratório de Programação
 
-## EStudo de caso
+## Estudo de caso
 A fim de colaborar com o recém-criado projeto de gestão do conhecimento, sua dupla foi
 requisitada pelos administradores da sua organização para desenvolver um sistema de
 informação para a emissão de atas de reunião. Após várias entrevistas com os funcionários de
@@ -22,4 +22,4 @@ mínimo dois participantes. O emissor e pelo menos mais um;
 reunião, ela pode ter sugestão e por fim a ata é dada como concluída e salva;
 
 ## Diagrama de Classes
-![Classes](https://imgur.com/mK0aJpC)
+<img src="https://imgur.com/mK0aJpC" width="240" height="427"/>
