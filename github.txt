@@ -1,0 +1,7 @@
+git init
+git remote add origin https://github.com/cristianomg95/Sistema_Clinica_Medica.git
+git fetch --all
+git pull
+git add .
+git commit -m "commit inicial"
+git push origin master
