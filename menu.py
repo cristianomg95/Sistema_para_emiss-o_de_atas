@@ -26,7 +26,8 @@ class Menu:
 6 - Exibir Participantes
 7 - Exibir Funcionarios
 8 - Exibir Participantes Externos
-9 - Exibir Sugestões"""))
+9 - Exibir Sugestões
+10 - Atualizar Ata"""))
 		while True:
 			opc = input("""Escolha uma opção: """)
 			if opc == '1':
@@ -59,5 +60,8 @@ class Menu:
 				break
 			elif opc == '9':
 				self.__sugestao.selecionarSugestao()
-				break			
+				break
+			elif opc == '10':
+				self.__ata.atualizar()
+				break
 			else: print("Escolha uma opção Valida !!!")	

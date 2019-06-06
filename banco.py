@@ -18,5 +18,9 @@ class DataBase:
 		listObj.append(obj)
 		pk.dump(listObj, open(self.archive, "wb"))
 
+	def atualizar(self,newlist):
+		pk.dump(newlist, open(self.archive, 'wb'))
+
+
 
 

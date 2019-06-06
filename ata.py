@@ -7,7 +7,7 @@ class Ata:
 		self.__inicio = ''
 		self.__termino = ''
 		self.__pauta = ''
-		self.__descriçao = ''
+		self.__descricao = ''
 		self.__palavraChave = ''
 		self.__tipo = ''
 		self.__estatus = ''
@@ -15,7 +15,7 @@ class Ata:
 		self.__participanteCadastrados = DataBase('database/participantes.pickle')
 		self.__participantesAta = []
 		self.__ata = {}
-		self.__db = DataBase('database/atas.pickle')
+		self.__dbAtas = DataBase('database/atas.pickle')
 
 
 	
@@ -31,7 +31,7 @@ class Ata:
 		self.__pauta = input('Pauta: ')
 		self.__inicio = input('Inicio da reunião: ')
 		self.__termino = input('Termino da reunião: ')
-		self.__descriçao = input('Descreva a Reunião: ')
+		self.__descricao = input('Descreva a Reunião: ')
 		self.__palavraChave = input('Palavra Chave: ')
 		self.__estatus = input("Estatus da reunião: ")
 		varQuant = 0
@@ -52,7 +52,10 @@ class Ata:
 					print('Esse nome não está na lista de participantes cadastrados, digite o nome de outro participante!!!')
 			if varQuant == 10: print('Limite de participantes excedido !!!')
 		self.__ata = {'funcionario': self.__funcionario.exibir()['nome'], 'titulo': self.__titulo,
-		              'pauta': self.__pauta,'inicio da reunião': self.__inicio, 'termino da reunião': self.__termino, 'descrição': self.__descriçao, 'palavra chave': self.__palavraChave,'estatus': self.__estatus, 'participantes': self.__participantesAta}
+					'pauta': self.__pauta,'inicio da reunião': self.__inicio,
+					'termino da reunião': self.__termino, 'descrição': self.__descricao,
+					'palavra chave': self.__palavraChave,'estatus': self.__estatus,
+					'participantes': self.__participantesAta}
 		print('Ata cadastrada!!!')
 
 
@@ -62,33 +65,55 @@ class Ata:
 	def atualizar(self):
 		ata = input('Informe o titulo da ata que deseja atualizar: ')
 		try:
-			for i in self.__db:
+			a = False
+			for num, i in enumerate(self.__dbAtas.loadObject()):
+				newList = self.__dbAtas.loadObject()
 				if i.exibir()['titulo'] == ata:
 					opc = input('O que você quer atualizar [titulo, pauta, descrição, palavra chave, estatus]: ')
 					while True:
 						if opc == 'titulo':
 							titulo = input('Digite novo titulo: ')
 							i.exibir()['titulo'] = titulo
+							newList[num] = i
+							self.__dbAtas.atualizar(newList)
+							a = True
 							break
 						elif opc == 'pauta':
 							pauta = input('Digite a nova pauta: ')
 							i.exibir()['pauta'] = pauta
+							newList[num] = i
+							self.__dbAtas.atualizar(newList)
+							a = True
 							break
 						elif opc == 'descrição':
 							descricao = input('Digite a nova descrição: ')
-							i.exibir()['descrição'] = descricao 
+							i.exibir()['descrição'] = descricao
+							newList[num] = i
+							self.__dbAtas.atualizar(newList)
+							a = True
 							break
 						elif opc == 'palavra chave':
 							palavraChave = input('Digite a nova palavra chave: ')
 							i.exibir()['palavra chave'] = palavraChave
+							newList[num] = i
+							self.__dbAtas.atualizar(newList)
+							a = True
 							break
 						elif opc == 'estatus':
 							estatus = input('Digite o novo estatus: ')
 							i.exibir()['estatus'] = estatus
+							newList[num] = i
+							self.__dbAtas.atualizar(newList)
+							a = True
 							break
 						else:
 							print('Opção invalida')
-				else: continue
+				else:
+					continue
+				if a:
+					break
+			if not a:
+				print('nada encontrado')
 		except:
 			print('Nenhuma ata encontrada com esse titulo !!!')
 
