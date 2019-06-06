@@ -22,4 +22,4 @@ mínimo dois participantes. O emissor e pelo menos mais um;
 reunião, ela pode ter sugestão e por fim a ata é dada como concluída e salva;
 
 ## Diagrama de Classes
-<img src="https://github.com/cristianomg95/Sistema_para_emiss-o_de_atas/blob/master/diagrama%20de%20classse.png" width="240" height="427"/>
+<img src="https://github.com/cristianomg95/Sistema_para_emiss-o_de_atas/blob/master/diagrama%20de%20classse.png"/>
