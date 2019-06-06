@@ -8,7 +8,7 @@ class Ata:
 		self.__termino = ''
 		self.__pauta = ''
 		self.__descricao = ''
-		self.__palavraChave = ''
+		self.__palavraChave = []
 		self.__tipo = ''
 		self.__estatus = ''
 		self.__funcionario = Funcionario()
@@ -32,7 +32,18 @@ class Ata:
 		self.__inicio = input('Inicio da reunião: ')
 		self.__termino = input('Termino da reunião: ')
 		self.__descricao = input('Descreva a Reunião: ')
-		self.__palavraChave = input('Palavra Chave: ')
+		while True:
+			palavraChave= input('Palavra Chave [digite SAIR para finalizar as palavras chaves]:  ').lower()
+			if palavraChave == 'sair':
+				if len(self.__palavraChave) >= 1:
+					break
+				else:
+					print('Cadastre pelo menos uma palavra chave')
+			elif palavraChave != '':
+				self.__palavraChave.append(palavraChave)
+			else:
+				print('Digite alguma palavra chave')
+
 		self.__estatus = input("Estatus da reunião: ")
 		varQuant = 0
 		while varQuant < 10:
@@ -48,8 +59,8 @@ class Ata:
 							break
 						else: 
 							print("Participante já cadastrado na ata!!!")
-				else: 
-					print('Esse nome não está na lista de participantes cadastrados, digite o nome de outro participante!!!')
+					else:
+						print('Esse nome não está na lista de participantes cadastrados, digite o nome de outro participante!!!')
 			if varQuant == 10: print('Limite de participantes excedido !!!')
 		self.__ata = {'funcionario': self.__funcionario.exibir()['nome'], 'titulo': self.__titulo,
 					'pauta': self.__pauta,'inicio da reunião': self.__inicio,
